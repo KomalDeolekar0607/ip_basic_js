@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <h2>Place Your Orders Now !!!!</h2>
+        <form id="orderform">
+            <fieldset>
+                <legend>T-Shirt Specifications</legend>
+               <label for="tagline">Tagline :</label>
+                <input type="text" name="tagline"  placeholder="Enter Tagline" required>
+                <br><br>
+                <label for="color">Colour : </label>
+                <select name="colorSelection" name="colour" id="" required>
+                    <option value="Select">Select Colour</option>
+                    <option value="red">Red</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="white">White</option>
+                    <option value="green">Green</option>
+                    <option value="grey">Grey</option>
+                    <option value="blue">Blue</option>
+                    <option value="purple">Purple</option>
+                </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="size">Size : </label>
+                <select name="size" name="size" id="" required>
+                    <option value="select">Select size</option>
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                    <option value="xl">XL</option>
+                    <option value="xxl">XXL</option>
+                    <option value="xxxl">XXXL</option>
+                </select>
+
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Delivery details :</legend>
+                <label for="Quantity : ">Quantity : </label>
+                <input type="number" name="quantity" pattern="\d{10}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="date">Delivery Date : </label>
+                <input type="date" name="date">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="name">Recipients's Name : </label>
+                <input type="text" name="recipient" required><br>
+                <label for="email">Email : </label>
+                <input type="email" name="email" required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="contact">Contact No.</label>
+                <input type="tel" name="telephone" required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="address">Address : </label>
+                <textarea name="address" id="" required></textarea>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <label for="remark">Any remark or additional comment?</label><br>
+                    <textarea name="remark" id="" placeholder="Enter commensts" rows="5" cols="70"> </textarea>
+                </fieldset>
+                <br>
+            <input type="submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="reset">
+                </form>
+
+                <div id="message">meafhghj</div>
+
+    </section>
+
+    <script>
+        document.getElementById("orderform").addEventListener('submit', validateDetails)
+
+        function validateDetails(){
+            let tagline = document.getElementsByName("tagline").value
+            let colour = document.getElementsByName("colour").value
+            let size = document.getElementsByName("size").value
+            let quantity = document.getElementsByName("quantity").value
+            let date = document.getElementsByName("date").value
+            let recipient = document.getElementsByName("recipient").value
+            let email = document.getElementsByName("email").value
+            let telephone = document.getElementsByName("telephone").value
+            let address = document.getElementsByName("address").value
+            let remark = document.getElementsByName("remark").value
+
+            const now = new Date();
+            console.log(date)
+
+            if(tagline.length() > 7){
+                document.getElementById("message").innerHTML = `<h3>please provide tagline less than 8 letters<h3>`
+            }
+            else if(date != now){
+                document.getElementById("message").innerHTML = `<h3>Please provide correct and today's date<h3>`
+            }
+            else if(telephone.length > 10){
+                document.getElementById("message").innerHTML = `<h3>Enter correct mobile number<h3>`
+            }
+            console.log("cfvgbhjn")
+        }
+
+        const now = new Date();
+         console.log(now)
+    </script>
+</body>
+</html>
