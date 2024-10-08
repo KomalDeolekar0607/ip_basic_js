@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <h2>Place Your Orders Now !!!!</h2>
+        <form id="orderform">
+            <fieldset>
+                <legend>T-Shirt Specifications</legend>
+                <label for="tagline">Tagline :</label>
+                <input type="text" name="tagline" id="tagline" placeholder="Enter Tagline" required>
+                <br><br>
+                <label for="color">Colour : </label>
+                <select name="colour" id="color" required>
+                    <option value="Select">Select Colour</option>
+                    <option value="red">Red</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="white">White</option>
+                    <option value="green">Green</option>
+                    <option value="grey">Grey</option>
+                    <option value="blue">Blue</option>
+                    <option value="purple">Purple</option>
+                </select>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="size">Size : </label>
+                <select name="size" id="size" required>
+                    <option value="select">Select size</option>
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                    <option value="xl">XL</option>
+                    <option value="xxl">XXL</option>
+                    <option value="xxxl">XXXL</option>
+                </select>
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Delivery details :</legend>
+                <label for="quantity">Quantity : </label>
+                <input type="number" name="quantity" required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="date">Delivery Date : </label>
+                <input type="date" name="date" required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="recipient">Recipient's Name : </label>
+                <input type="text" name="recipient" required><br>
+                <label for="email">Email : </label>
+                <input type="email" name="email" required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="telephone">Contact No.</label>
+                <input type="tel" name="telephone" required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="address">Address : </label>
+                <textarea name="address" required></textarea>
+            </fieldset>
+            <br>
+            <fieldset>
+                <label for="remark">Any remark or additional comment?</label><br>
+                <textarea name="remark" placeholder="Enter comments" rows="5" cols="70"></textarea>
+            </fieldset>
+            <br>
+            <input type="submit" id="sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="reset">
+        </form>
+
+        <div id="message"></div>
+    </section>
+
+    <script>
+        document.getElementById("orderform").addEventListener('submit', validateDetails);
+
+        function validateDetails(event) {
+            event.preventDefault(); // Prevent form submission
+            console.log("Validating details...");
+
+            let Tagline = document.getElementsByName("tagline")[0].value;
+            let Colour = document.getElementsByName("colour")[0].value;
+            let Size = document.getElementsByName("size")[0].value;
+            let Quantity = document.getElementsByName("quantity")[0].value;
+            let DeliveryDate = new Date(document.getElementsByName("date")[0].value);
+            let Recipient = document.getElementsByName("recipient")[0].value;
+            let Email = document.getElementsByName("email")[0].value;
+            let Telephone = document.getElementsByName("telephone")[0].value;
+            let Address = document.getElementsByName("address")[0].value;
+            let Remark = document.getElementsByName("remark")[0].value;
+
+            const now = new Date();
+
+            if (Tagline.length > 7) {
+                document.getElementById("message").innerHTML = `<h3>Please provide a tagline less than 8 letters</h3>`;
+            }
+            else if (Telephone.length !== 10) { 
+                document.getElementById("message").innerHTML = `<h3>Enter a correct mobile number (10 digits)</h3>`;
+            } else {
+                document.getElementById("message").innerHTML = `<h3>Order placed successfully!</h3>`;
+                
+            
+
+            const parameters = new URLSearchParams({
+                Tagline,
+                Colour,
+                Size,
+                Quantity,
+                DeliveryDate: DeliveryDate.toISOString().split('T')[0], // Format the date
+                Recipient,
+                Email,
+                Telephone,
+                Address,
+                Remark
+            });
+
+            setTimeout(() => {
+                window.location.href = `success.html?${parameters.toString()}`; // Change "success.html" to your desired page
+            }, 2000);
+
+        }
+    
+        }
+    </script>
+</body>
+</html>

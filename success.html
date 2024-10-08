@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Success</title>
+</head>
+<body>
+    <h1>Order Details</h1>
+    <div id="order-details"></div>
+
+    <script>
+        // Function to get query parameters
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            let orderDetails = '';
+            for (const [key, value] of params) {
+                orderDetails += `<p><strong>${key}:</strong> ${value}</p>`;
+            }
+            const now = new Date();
+            orderDetails += `<p><strong>Date :</strong> ${now}</p>`;
+            orderDetails += `<p><strong>Order placed successfully !!!!</strong</p>`;
+            return orderDetails;
+        }
+
+        // Display order details on the page
+        document.getElementById('order-details').innerHTML = getQueryParams();
+    </script>
+</body>
+</html>
