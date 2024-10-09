@@ -84,6 +84,22 @@
             let Address = document.getElementsByName("address")[0].value;
             let Remark = document.getElementsByName("remark")[0].value;
 
+             const datePicker = document.getElementByName('date');
+
+    // Get today's date
+    const today = new Date();
+    // Set the date to two days from today
+    today.setDate(today.getDate() + 2);
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+    const dd = String(today.getDate()).padStart(2, '0');
+    
+    // Set the minimum date to two days from today
+    datePicker.setAttribute('min', `${yyyy}-${mm}-${dd}`);
+    
+    // Set the minimum date to today
+    //datePicker.setAttribute('min', `${yyyy}-${mm}-${dd}`);
+
             const now = new Date();
 
             if (Tagline.length > 7) {
